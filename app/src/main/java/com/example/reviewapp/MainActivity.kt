@@ -3,9 +3,7 @@ package com.example.reviewapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.reviewapp.ui.main.AndroidMaterialAppRatingFragment
-import com.example.reviewapp.ui.main.AndroidRateFragment
-import com.example.reviewapp.ui.main.AndroidRateThisAppFragment
+import com.example.reviewapp.ui.main.*
 import com.stepstone.apprating.listener.RatingDialogListener
 
 class MainActivity : AppCompatActivity(), RatingDialogListener {
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity(), RatingDialogListener {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, AndroidRateThisAppFragment.newInstance())
+                .replace(R.id.container, RatingManagerFragment.newInstance())
                 .commitNow()
         }
     }

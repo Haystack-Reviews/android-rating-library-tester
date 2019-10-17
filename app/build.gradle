@@ -37,4 +37,7 @@ dependencies {
     implementation 'com.stepstone.apprating:app-rating:2.3.1'
     implementation 'com.github.hotchemi:android-rate:1.0.1'
     implementation 'io.github.kobakei:ratethisapp:1.2.0'
+    implementation 'com.github.stkent:amplify:2.2.1'
+    implementation 'com.github.Angtrim:Android-Five-Stars-Library:v3.1'
+    implementation 'com.github.iamrobj:RatingManager:0.3'
 }
