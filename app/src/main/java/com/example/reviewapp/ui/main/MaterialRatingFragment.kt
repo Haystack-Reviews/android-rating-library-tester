@@ -10,14 +10,14 @@ import com.example.reviewapp.R
 import com.stepstone.apprating.AppRatingDialog
 
 
-class AndroidMaterialAppRatingFragment : Fragment() {
+class MaterialRatingFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         showDialog()
     }
 
     companion object {
-        fun newInstance() = AndroidMaterialAppRatingFragment()
+        fun newInstance() = MaterialRatingFragment()
     }
 
     private lateinit var viewModel: MainViewModel
@@ -67,7 +67,8 @@ class AndroidMaterialAppRatingFragment : Fragment() {
                 .setCancelable(false)
                 .setCanceledOnTouchOutside(false)
                 .create(it)
-                .setTargetFragment(this, 1) // only if listener is implemented by fragment
+                    // Why does this crash when using Navigation component?
+//                .setTargetFragment(this, 1) // only if listener is implemented by fragment
                 .show()
         }
     }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.reviewapp.ui.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_amplifyFragment"
+            app:destination="@id/amplifyFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_androidFiveStarLibaryFragment"
+            app:destination="@id/androidFiveStarLibaryFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_androidRateFragment"
+            app:destination="@id/androidRateFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_androidRateThisAppFragment"
+            app:destination="@id/androidRateThisAppFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_materialRatingFragment"
+            app:destination="@id/materialRatingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/amplifyFragment"
+        android:name="com.example.reviewapp.ui.main.AmplifyFragment"
+        android:label="AmplifyFragment" />
+    <fragment
+        android:id="@+id/androidFiveStarLibaryFragment"
+        android:name="com.example.reviewapp.ui.main.AndroidFiveStarLibaryFragment"
+        android:label="AndroidFiveStarLibaryFragment" />
+    <fragment
+        android:id="@+id/androidRateFragment"
+        android:name="com.example.reviewapp.ui.main.AndroidRateFragment"
+        android:label="AndroidRateFragment" />
+    <fragment
+        android:id="@+id/androidRateThisAppFragment"
+        android:name="com.example.reviewapp.ui.main.AndroidRateThisAppFragment"
+        android:label="AndroidRateThisAppFragment" />
+    <fragment
+        android:id="@+id/materialRatingFragment"
+        android:name="com.example.reviewapp.ui.main.MaterialRatingFragment"
+        android:label="MaterialRatingFragment" />
+</navigation>
