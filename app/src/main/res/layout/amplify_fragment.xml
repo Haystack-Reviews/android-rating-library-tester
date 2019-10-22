@@ -7,14 +7,58 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MaterialRatingFragment">
 
-    <com.github.stkent.amplify.prompt.DefaultLayoutPromptView
-        android:id="@+id/prompt_view"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/library_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/project_link"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/amplify" />
+
+
+    <Button
+        android:id="@+id/project_link"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/view_on_github"
+        app:layout_constraintBottom_toTopOf="@id/license"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/library_name" />
+
+    <TextView
+        android:id="@+id/license"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/launch_amplify"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/project_link"
+        tools:text="@string/apache_version_2" />
+
+    <Button
+        android:id="@+id/launch_amplify"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/launch_amplify"
+        app:layout_constraintBottom_toTopOf="@id/amplify_prompt_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/license"
+
+
+        />
+
+    <com.github.stkent.amplify.prompt.DefaultLayoutPromptView
+        android:id="@+id/amplify_prompt_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/launch_amplify" />
 
     />
 
