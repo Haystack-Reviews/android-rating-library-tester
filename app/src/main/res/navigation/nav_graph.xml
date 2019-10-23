@@ -11,9 +11,6 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_amplifyFragment"
-            app:destination="@id/amplifyFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_androidFiveStarLibaryFragment"
             app:destination="@id/androidFiveStarLibaryFragment" />
         <action
@@ -25,11 +22,10 @@
         <action
             android:id="@+id/action_mainFragment_to_materialRatingFragment"
             app:destination="@id/materialRatingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_reviewFragment"
+            app:destination="@id/reviewFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/amplifyFragment"
-        android:name="com.example.reviewapp.ui.main.AmplifyFragment"
-        android:label="AmplifyFragment" />
     <fragment
         android:id="@+id/androidFiveStarLibaryFragment"
         android:name="com.example.reviewapp.ui.main.AndroidFiveStarLibaryFragment"
@@ -46,4 +42,18 @@
         android:id="@+id/materialRatingFragment"
         android:name="com.example.reviewapp.ui.main.MaterialRatingFragment"
         android:label="MaterialRatingFragment" />
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.example.reviewapp.ui.main.ReviewFragment"
+        android:label="ReviewFragment" >
+        <argument
+            android:name="library"
+            app:argType="string" />
+        <argument
+            android:name="projectUrl"
+            app:argType="string" />
+        <argument
+            android:name="license"
+            app:argType="string" />
+    </fragment>
 </navigation>

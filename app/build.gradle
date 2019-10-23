@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -20,6 +22,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
@@ -41,9 +52,6 @@ dependencies {
     implementation 'com.github.stkent:amplify:2.2.1'
     implementation 'com.github.Angtrim:Android-Five-Stars-Library:v3.1'
 
-    def nav_version = "2.1.0"
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
-    // For Kotlin use navigation-fragment-ktx
-    implementation "androidx.navigation:navigation-ui:$nav_version"
-    // For Kotlin use navigation-ui-ktx
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 }

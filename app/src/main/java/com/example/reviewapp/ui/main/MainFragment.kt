@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
 import com.example.reviewapp.R
+import com.example.reviewapp.models.AmplifyLibrary
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
@@ -49,12 +50,15 @@ class MainFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when(v){
-            amplify_button -> navController?.navigate(R.id.action_mainFragment_to_amplifyFragment)
-            five_star_button -> navController?.navigate(R.id.action_mainFragment_to_androidFiveStarLibaryFragment)
-            material_button -> navController?.navigate(R.id.action_mainFragment_to_materialRatingFragment)
-            rate_button -> navController?.navigate(R.id.action_mainFragment_to_androidRateFragment)
-            rate_this_app_button -> navController?.navigate(R.id.action_mainFragment_to_androidRateThisAppFragment)
+        val amplifyFragmentNav = MainFragmentDirections.actionMainFragmentToReviewFragment(
+            AmplifyLibrary.name, AmplifyLibrary.projectUrl, AmplifyLibrary.license
+        )
+        when (v) {
+            amplify_button -> navController.navigate(amplifyFragmentNav)
+            five_star_button -> navController.navigate(R.id.action_mainFragment_to_androidFiveStarLibaryFragment)
+            material_button -> navController.navigate(R.id.action_mainFragment_to_materialRatingFragment)
+            rate_button -> navController.navigate(R.id.action_mainFragment_to_androidRateFragment)
+            rate_this_app_button -> navController.navigate(R.id.action_mainFragment_to_androidRateThisAppFragment)
         }
     }
 
