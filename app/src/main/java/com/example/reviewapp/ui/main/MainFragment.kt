@@ -10,7 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
 import com.example.reviewapp.R
-import com.example.reviewapp.models.AmplifyLibrary
+import com.example.reviewapp.models.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
@@ -22,13 +22,6 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment(), View.OnClickListener {
 
     lateinit var navController: NavController
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,15 +43,32 @@ class MainFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        val amplifyFragmentNav = MainFragmentDirections.actionMainFragmentToReviewFragment(
-            AmplifyLibrary.name, AmplifyLibrary.projectUrl, AmplifyLibrary.license
-        )
         when (v) {
-            amplify_button -> navController.navigate(amplifyFragmentNav)
-            five_star_button -> navController.navigate(R.id.action_mainFragment_to_androidFiveStarLibaryFragment)
-            material_button -> navController.navigate(R.id.action_mainFragment_to_materialRatingFragment)
-            rate_button -> navController.navigate(R.id.action_mainFragment_to_androidRateFragment)
-            rate_this_app_button -> navController.navigate(R.id.action_mainFragment_to_androidRateThisAppFragment)
+            amplify_button -> navController.navigate(
+                MainFragmentDirections.actionMainFragmentToReviewFragment(
+                    AmplifyLibrary
+                )
+            )
+            five_star_button -> navController.navigate(
+                MainFragmentDirections.actionMainFragmentToReviewFragment(
+                    FiveStarsLibrary
+                )
+            )
+            material_button -> navController.navigate(
+                MainFragmentDirections.actionMainFragmentToReviewFragment(
+                    MaterialAppRatingLibrary
+                )
+            )
+            rate_button -> navController.navigate(
+                MainFragmentDirections.actionMainFragmentToReviewFragment(
+                    RateLibrary
+                )
+            )
+            rate_this_app_button -> navController.navigate(
+                MainFragmentDirections.actionMainFragmentToReviewFragment(
+                    RateThisAppLibrary
+                )
+            )
         }
     }
 

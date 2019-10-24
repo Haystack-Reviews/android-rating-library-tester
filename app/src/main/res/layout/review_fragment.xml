@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/amplify" />
+        tools:text="@string/amplify_library" />
 
 
     <Button
@@ -32,17 +32,17 @@
         android:id="@+id/license"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/launch_amplify"
+        app:layout_constraintBottom_toTopOf="@id/launch_library"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/project_link"
         tools:text="@string/apache_version_2" />
 
     <Button
-        android:id="@+id/launch_amplify"
+        android:id="@+id/launch_library"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/launch_amplify"
+        android:text="@string/launch_library"
         app:layout_constraintBottom_toTopOf="@id/amplify_prompt_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/launch_amplify" />
+        app:layout_constraintTop_toBottomOf="@id/launch_library" />
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
