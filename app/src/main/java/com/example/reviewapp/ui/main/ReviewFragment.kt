@@ -3,6 +3,7 @@ package com.example.reviewapp.ui.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,9 @@ import com.github.stkent.amplify.tracking.Amplify
 import com.kobakei.ratethisapp.RateThisApp
 import com.stepstone.apprating.AppRatingDialog
 import hotchemi.android.rate.AppRate
+import hotchemi.android.rate.OnClickButtonListener
 import kotlinx.android.synthetic.main.review_fragment.*
+import java.util.*
 
 
 class ReviewFragment : Fragment() {
@@ -71,15 +74,15 @@ class ReviewFragment : Fragment() {
                 .setPositiveButtonText("Submit")
                 .setNegativeButtonText("Cancel")
                 .setNeutralButtonText("Later")
-//            .setNoteDescriptions(
-//                Arrays.asList(
-//                    "Very Bad",
-//                    "Not good",
-//                    "Quite ok",
-//                    "Very Good",
-//                    "Excellent !!!"
-//                )
-//            )
+            .setNoteDescriptions(
+                listOf(
+                    "Very Bad",
+                    "Not good",
+                    "Quite ok",
+                    "Very Good",
+                    "Excellent !!!"
+                )
+            )
                 .setDefaultRating(2)
                 .setTitle("Rate this application")
                 .setDescription("Please select some stars and give your feedback")
@@ -125,11 +128,11 @@ class ReviewFragment : Fragment() {
                 .setRemindInterval(2) // default 1
                 .setShowLaterButton(true) // default true
                 .setDebug(true) // default false
-//                .setOnClickButtonListener(object : OnClickButtonListener() { // callback listener.
-//                    fun onClickButton(which: Int) {
-//                        Log.d(MainActivity::class.java.name, Integer.toString(which))
-//                    }
-//                })
+                .setOnClickButtonListener(object : OnClickButtonListener { // callback listener.
+                    override fun onClickButton(which: Int) {
+                        Log.d("SEBLOG", "launchAndroidRate ${which}")
+                    }
+                })
                 .monitor()
 
             // Show a dialog if meets conditions
