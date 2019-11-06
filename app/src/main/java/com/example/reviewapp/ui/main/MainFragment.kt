@@ -46,27 +46,27 @@ class MainFragment : Fragment(), View.OnClickListener {
         when (v) {
             amplify_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    AmplifyLibrary
+                    AmplifyLibraryData
                 )
             )
             five_star_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    FiveStarsLibrary
+                    FiveStarsLibraryData
                 )
             )
             material_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    MaterialAppRatingLibrary
+                    MaterialAppRatingLibraryData
                 )
             )
             rate_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    RateLibrary
+                    RateLibraryData
                 )
             )
             rate_this_app_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    RateThisAppLibrary
+                    RateThisAppLibraryData
                 )
             )
         }

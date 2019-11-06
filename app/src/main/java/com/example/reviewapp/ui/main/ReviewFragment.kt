@@ -18,7 +18,6 @@ import com.stepstone.apprating.AppRatingDialog
 import hotchemi.android.rate.AppRate
 import hotchemi.android.rate.OnClickButtonListener
 import kotlinx.android.synthetic.main.review_fragment.*
-import java.util.*
 
 
 class ReviewFragment : Fragment() {
@@ -30,19 +29,40 @@ class ReviewFragment : Fragment() {
 
         library_name.text = args.reviewLibDataData.name
         project_link.setOnClickListener {
-            activity?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(args.reviewLibDataData.projectUrl)))
+            activity?.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(args.reviewLibDataData.projectUrl)
+                )
+            )
         }
         license.text = args.reviewLibDataData.license
 
-        launch_library.setOnClickListener {
-            when(args.reviewLibDataData) {
-                AmplifyLibrary -> launchAmplify()
-                RateThisAppLibrary -> launchRateThisApp()
-                RateLibrary -> launchAndroidRate()
-                MaterialAppRatingLibrary -> launchMaterialAppRating()
-                FiveStarsLibrary -> launchAndroidFiveStars()
+        val applicationContext = context?.applicationContext
+        val activity = activity
+        val fragmentContext = context
+        if (applicationContext != null && activity != null && fragmentContext != null) {
+            val config = ReviewLibraryConfig(
+                applicationContext,
+                fragmentContext,
+                activity,
+                true,
+                "Rate our app",
+                "Let us know what you think of our app"
+            )
+
+            launch_library.setOnClickListener {
+                when (args.reviewLibDataData) {
+                    AmplifyLibraryData -> launchAmplify(config)
+                    RateThisAppLibraryData -> launchRateThisApp(config)
+                    RateLibraryData -> launchAndroidRate(config)
+                    MaterialAppRatingLibraryData -> launchMaterialAppRating(config)
+                    FiveStarsLibraryData -> launchAndroidFiveStars(config)
+                }
             }
         }
+
+
     }
 
     override fun onCreateView(
@@ -53,27 +73,27 @@ class ReviewFragment : Fragment() {
     }
 
 
-    private fun launchAmplify() {
+    private fun launchAmplify(config: ReviewLibraryConfig) {
         Amplify.getSharedInstance().promptIfReady(amplify_prompt_view)
     }
 
-    private fun launchRateThisApp() {
-        context?.let {
-            // Monitor launch times and interval from installation
-            val config = RateThisApp.Config(0, 0)
-            RateThisApp.init(config)
-            RateThisApp.onCreate(it)
-            // If the condition is satisfied, "Rate this app" dialog will be shown
-            RateThisApp.showRateDialogIfNeeded(it)
+    private fun launchRateThisApp(config: ReviewLibraryConfig) {
+        // Monitor launch times and interval from installation
+        val rateConfig = RateThisApp.Config(0, 0)
+        RateThisApp.init(rateConfig)
+        RateThisApp.onCreate(config.fragmentContext)
+        if (config.debugAlwaysLaunch) {
+            RateThisApp.showRateDialog(config.applicationContext)
+        } else {
+            RateThisApp.showRateDialogIfNeeded(config.applicationContext)
         }
     }
 
-    private fun launchMaterialAppRating() {
-        activity?.let {
-            AppRatingDialog.Builder()
-                .setPositiveButtonText("Submit")
-                .setNegativeButtonText("Cancel")
-                .setNeutralButtonText("Later")
+    private fun launchMaterialAppRating(config: ReviewLibraryConfig) {
+        AppRatingDialog.Builder()
+            .setPositiveButtonText("Submit")
+            .setNegativeButtonText("Cancel")
+            .setNeutralButtonText("Later")
             .setNoteDescriptions(
                 listOf(
                     "Very Bad",
@@ -83,11 +103,11 @@ class ReviewFragment : Fragment() {
                     "Excellent !!!"
                 )
             )
-                .setDefaultRating(2)
-                .setTitle("Rate this application")
-                .setDescription("Please select some stars and give your feedback")
-                .setCommentInputEnabled(true)
-                .setDefaultComment("This app is pretty cool !")
+            .setDefaultRating(2)
+            .setTitle(config.initialTitle)
+            .setDescription(config.initialMessage)
+            .setCommentInputEnabled(true)
+            .setDefaultComment("This app is pretty cool !")
 //            .setStarColor(R.color.starColor)
 //            .setNoteDescriptionTextColor(R.color.noteDescriptionTextColor)
 //            .setTitleTextColor(R.color.titleTextColor)
@@ -97,49 +117,43 @@ class ReviewFragment : Fragment() {
 //            .setCommentTextColor(R.color.commentTextColor)
 //            .setCommentBackgroundColor(R.color.colorPrimaryDark)
 //            .setWindowAnimation(R.style.MyDialogFadeAnimation)
-                .setCancelable(false)
-                .setCanceledOnTouchOutside(false)
-                .create(it)
-                // Why does this crash when using Navigation component?
+            .setCancelable(false)
+            .setCanceledOnTouchOutside(false)
+            .create(config.activity)
+            // Why does this crash when using Navigation component?
 //                .setTargetFragment(this, 1) // only if listener is implemented by fragment
-                .show()
-        }
+            .show()
     }
 
-    private fun launchAndroidFiveStars() {
-        activity?.let { activity ->
-            // Future Seb: if you don't see this dialog, check if you pressed the "Never" box
-            val fiveStarsDialog = FiveStarsDialog(activity, "angelo.gallarello@gmail.com")
-            fiveStarsDialog.setRateText("Your custom text")
-                .setTitle("Your custom title")
-                .setForceMode(false)
-                .setUpperBound(2) // Market opened if a rating >= 2 is selected
+    private fun launchAndroidFiveStars(config: ReviewLibraryConfig) {
+        // Future Seb: if you don't see this dialog, check if you pressed the "Never" box
+        val fiveStarsDialog =
+            FiveStarsDialog(config.activity, "angelo.gallarello@gmail.com")
+        fiveStarsDialog.setRateText(config.initialMessage)
+            .setTitle(config.initialTitle)
+            .setForceMode(config.debugAlwaysLaunch)
+            .setUpperBound(2) // Market opened if a rating >= 2 is selected
 //                .setNegativeReviewListener() // OVERRIDE mail intent for negative review
 //                .setReviewListener() // Used to listen for reviews (if you want to track them )
-                .showAfter(0)
-        }
+            .showAfter(0)
     }
 
-    private fun launchAndroidRate() {
-        context?.applicationContext.let { appContext ->
-            AppRate.with(appContext)
-                .setInstallDays(0) // default 10, 0 means install day.
-                .setLaunchTimes(3) // default 10
-                .setRemindInterval(2) // default 1
-                .setShowLaterButton(true) // default true
-                .setDebug(true) // default false
-                .setOnClickButtonListener(object : OnClickButtonListener { // callback listener.
-                    override fun onClickButton(which: Int) {
-                        Log.d("SEBLOG", "launchAndroidRate ${which}")
-                    }
-                })
-                .monitor()
+    private fun launchAndroidRate(config: ReviewLibraryConfig) {
+        AppRate.with(config.fragmentContext)
+            .setInstallDays(0) // default 10, 0 means install day.
+            .setLaunchTimes(3) // default 10
+            .setRemindInterval(2) // default 1
+            .setShowLaterButton(true) // default true
+            .setDebug(config.debugAlwaysLaunch) // default false
+            .setOnClickButtonListener(object : OnClickButtonListener { // callback listener.
+                override fun onClickButton(which: Int) {
+                    Log.d("SEBLOG", "launchAndroidRate ${which}")
+                }
+            })
+            .monitor()
 
-            // Show a dialog if meets conditions
-            activity?.let { activity ->
-                AppRate.showRateDialogIfMeetsConditions(activity)
-            }
-        }
+        // Show a dialog if meets conditions
+        AppRate.showRateDialogIfMeetsConditions(config.activity)
     }
 
 }
