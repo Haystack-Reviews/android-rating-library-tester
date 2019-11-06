@@ -43,30 +43,37 @@ class MainFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+
+        val config = ReviewLibraryConfig(
+            true,
+            "Rate our app",
+            "Let us know what you think of our app"
+        )
+
         when (v) {
             amplify_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    AmplifyLibraryData
+                    AmplifyLibraryData, config
                 )
             )
             five_star_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    FiveStarsLibraryData
+                    FiveStarsLibraryData, config
                 )
             )
             material_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    MaterialAppRatingLibraryData
+                    MaterialAppRatingLibraryData, config
                 )
             )
             rate_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    RateLibraryData
+                    RateLibraryData, config
                 )
             )
             rate_this_app_button -> navController.navigate(
                 MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    RateThisAppLibraryData
+                    RateThisAppLibraryData, config
                 )
             )
         }
