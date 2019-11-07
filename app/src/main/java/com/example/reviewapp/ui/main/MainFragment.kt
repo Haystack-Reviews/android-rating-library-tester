@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
@@ -22,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment(), View.OnClickListener {
 
     lateinit var navController: NavController
+    lateinit var spinner: Spinner
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,48 +38,47 @@ class MainFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        amplify_button.setOnClickListener(this)
-        five_star_button.setOnClickListener(this)
-        material_button.setOnClickListener(this)
-        rate_button.setOnClickListener(this)
-        rate_this_app_button.setOnClickListener(this)
+        spinner = library_select_spinner
+
+        context?.let {
+
+            ArrayAdapter.createFromResource(
+                it,
+                R.array.select_library,
+                android.R.layout.simple_spinner_item
+            )
+                .also { adapter ->
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    spinner.adapter = adapter
+                }
+        }
+
+        launch_button.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
 
+
+        val selectedLibrary = when (spinner.selectedItem) {
+            getString(R.string.amplify_library) -> ReviewLibrary.AmplifyLibrary
+            getString(R.string.five_stars_library) -> ReviewLibrary.FiveStarsLibrary
+            getString(R.string.material_app_rating_library) -> ReviewLibrary.MaterialAppRatingLibrary
+            getString(R.string.rate_library) -> ReviewLibrary.RateLibrary
+            getString(R.string.rate_this_app_library) -> ReviewLibrary.RateThisAppLibrary
+            else -> ReviewLibrary.AmplifyLibrary
+        }
         val config = ReviewLibraryConfig(
+            selectedLibrary,
             true,
             "Rate our app",
             "Let us know what you think of our app"
         )
 
-        when (v) {
-            amplify_button -> navController.navigate(
-                MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    AmplifyLibraryData, config
-                )
+        navController.navigate(
+            MainFragmentDirections.actionMainFragmentToReviewFragment(
+                FiveStarsLibraryData, config
             )
-            five_star_button -> navController.navigate(
-                MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    FiveStarsLibraryData, config
-                )
-            )
-            material_button -> navController.navigate(
-                MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    MaterialAppRatingLibraryData, config
-                )
-            )
-            rate_button -> navController.navigate(
-                MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    RateLibraryData, config
-                )
-            )
-            rate_this_app_button -> navController.navigate(
-                MainFragmentDirections.actionMainFragmentToReviewFragment(
-                    RateThisAppLibraryData, config
-                )
-            )
-        }
+        )
     }
 
 

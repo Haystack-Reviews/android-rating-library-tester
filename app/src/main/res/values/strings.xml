@@ -9,4 +9,11 @@
     <string name="material_app_rating_library">Material App Rating</string>
     <string name="rate_library">Rate</string>
     <string name="rate_this_app_library">Rate This App</string>
+    <string-array name="select_library">
+        <item>@string/amplify_library</item>
+        <item>@string/five_stars_library</item>
+        <item>@string/material_app_rating_library</item>
+        <item>@string/rate_library</item>
+        <item>@string/rate_this_app_library</item>
+    </string-array>
 </resources>

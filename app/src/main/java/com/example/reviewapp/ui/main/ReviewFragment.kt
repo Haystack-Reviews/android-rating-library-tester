@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import angtrim.com.fivestarslibrary.FiveStarsDialog
 import com.example.reviewapp.R
 import com.example.reviewapp.models.*
+import com.example.reviewapp.models.ReviewLibrary.*
 import com.github.stkent.amplify.tracking.Amplify
 import com.kobakei.ratethisapp.RateThisApp
 import com.stepstone.apprating.AppRatingDialog
@@ -29,7 +30,7 @@ class ReviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        library_name.text = args.reviewLibData.reviewLibrary.name
+        library_name.text = args.reviewLibConfig.library.name
         project_link.setOnClickListener {
             activity?.startActivity(
                 Intent(
@@ -52,12 +53,12 @@ class ReviewFragment : Fragment() {
 
                 val androidSpecificConfig = AndroidSpecificConfig(applicationContext, fragmentContext, activity)
 
-                when (args.reviewLibData) {
-                    AmplifyLibraryData -> launchAmplify(config, androidSpecificConfig)
-                    RateThisAppLibraryData -> launchRateThisApp(config, androidSpecificConfig)
-                    RateLibraryData -> launchAndroidRate(config, androidSpecificConfig)
-                    MaterialAppRatingLibraryData -> launchMaterialAppRating(config, androidSpecificConfig)
-                    FiveStarsLibraryData -> launchAndroidFiveStars(config, androidSpecificConfig)
+                when (args.reviewLibConfig.library) {
+                    AmplifyLibrary -> launchAmplify(config, androidSpecificConfig)
+                    RateThisAppLibrary -> launchRateThisApp(config, androidSpecificConfig)
+                    RateLibrary -> launchAndroidRate(config, androidSpecificConfig)
+                    MaterialAppRatingLibrary -> launchMaterialAppRating(config, androidSpecificConfig)
+                    FiveStarsLibrary -> launchAndroidFiveStars(config, androidSpecificConfig)
                 }
             }
 

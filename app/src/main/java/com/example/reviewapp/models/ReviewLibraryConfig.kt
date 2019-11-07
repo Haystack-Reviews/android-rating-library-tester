@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ReviewLibraryConfig(
+    val library: ReviewLibrary,
     val debugAlwaysLaunch: Boolean,
     val initialMessage: String,
     val initialTitle: String

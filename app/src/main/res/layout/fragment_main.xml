@@ -6,54 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainFragment">
 
-    <Button
-        android:id="@+id/amplify_button"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/library_select_spinner"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/amplify_library"
-        app:layout_constraintBottom_toTopOf="@+id/five_star_button"
+        app:layout_constraintBottom_toTopOf="@+id/launch_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/five_star_button"
+        android:id="@+id/launch_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/five_stars_library"
-        app:layout_constraintBottom_toTopOf="@+id/material_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/amplify_button" />
-
-    <Button
-        android:id="@+id/material_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/material_app_rating_library"
-        app:layout_constraintBottom_toTopOf="@+id/rate_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/five_star_button" />
-
-    <Button
-        android:id="@+id/rate_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rate_library"
-        app:layout_constraintBottom_toTopOf="@+id/rate_this_app_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/material_button" />
-
-    <Button
-        android:id="@+id/rate_this_app_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rate_this_app_library"
+        android:text="@string/launch_library"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rate_button" />
+        app:layout_constraintTop_toBottomOf="@id/library_select_spinner" />
 </androidx.constraintlayout.widget.ConstraintLayout>
