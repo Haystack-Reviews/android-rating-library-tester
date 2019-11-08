@@ -9,6 +9,6 @@ import kotlinx.android.parcel.Parcelize
 data class ReviewLibraryConfig(
     val library: ReviewLibrary,
     val debugAlwaysLaunch: Boolean,
-    val initialMessage: String,
-    val initialTitle: String
+    val initialTitle: String,
+    val initialMessage: String
 ) : Parcelable

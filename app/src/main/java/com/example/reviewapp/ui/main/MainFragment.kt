@@ -66,9 +66,9 @@ class MainFragment : Fragment(), View.OnClickListener, AdapterView.OnItemSelecte
 
         val config = ReviewLibraryConfig(
             getLibraryFromSpinner(),
-            true,
-            "Rate our app",
-            "Let us know what you think of our app"
+            always_launch_switch.isChecked,
+            initial_title.text.toString(),
+            initial_message.text.toString()
         )
 
         navController.navigate(

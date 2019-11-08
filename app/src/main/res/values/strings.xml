@@ -9,6 +9,11 @@
     <string name="material_app_rating_library">Material App Rating</string>
     <string name="rate_library">Rate</string>
     <string name="rate_this_app_library">Rate This App</string>
+    <string name="initial_title">Rate our app</string>
+    <string name="initial_message">Let us know what you think of our app</string>
+    <string name="always_launch_switch">Launch library in debug mode (always on for now)</string>
+    <string name="more_controls">There aren\'t many controls for now. If you like this app, let us know on Github and we\'ll add lots of controls!</string>
+
     <string-array name="select_library">
         <item>@string/amplify_library</item>
         <item>@string/five_stars_library</item>
