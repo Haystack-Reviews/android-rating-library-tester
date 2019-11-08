@@ -20,9 +20,6 @@
         android:name="com.example.reviewapp.ui.main.ReviewFragment"
         android:label="ReviewFragment">
         <argument
-            android:name="reviewLibData"
-            app:argType="com.example.reviewapp.models.ReviewLibraryData" />
-        <argument
             android:name="reviewLibConfig"
             app:argType="com.example.reviewapp.models.ReviewLibraryConfig" />
     </fragment>

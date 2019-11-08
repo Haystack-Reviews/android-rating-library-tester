@@ -31,16 +31,6 @@ class ReviewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         library_name.text = args.reviewLibConfig.library.name
-        project_link.setOnClickListener {
-            activity?.startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse(args.reviewLibData.projectUrl)
-                )
-            )
-        }
-        license.text = args.reviewLibData.license
-
 
         val config = args.reviewLibConfig
 
@@ -85,9 +75,9 @@ class ReviewFragment : Fragment() {
         RateThisApp.init(rateConfig)
         RateThisApp.onCreate(androidSpecificConfig.fragmentContext)
         if (config.debugAlwaysLaunch) {
-            RateThisApp.showRateDialog(androidSpecificConfig.applicationContext)
+            RateThisApp.showRateDialog(androidSpecificConfig.fragmentContext)
         } else {
-            RateThisApp.showRateDialogIfNeeded(androidSpecificConfig.applicationContext)
+            RateThisApp.showRateDialogIfNeeded(androidSpecificConfig.fragmentContext)
         }
     }
 
