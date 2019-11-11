@@ -22,5 +22,10 @@
         <argument
             android:name="reviewLibConfig"
             app:argType="com.example.reviewapp.models.ReviewLibraryConfig" />
+        <action
+            android:id="@+id/action_reviewFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@+id/mainFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
