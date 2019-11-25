@@ -171,6 +171,8 @@ class ReviewFragment : Fragment() {
             .setLaunchTimes(3) // default 10
             .setRemindInterval(2) // default 1
             .setShowLaterButton(true) // default true
+            .setTitle(config.initialTitle)
+            .setMessage(config.initialMessage)
             .setDebug(config.debugAlwaysLaunch) // default false
             .setOnClickButtonListener(object : OnClickButtonListener { // callback listener.
                 override fun onClickButton(which: Int) {

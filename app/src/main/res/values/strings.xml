@@ -9,11 +9,11 @@
     <string name="stop_and_reset_library">Stop and reset library</string>
     <string name="apache_version_2">Apache Version 2</string>
     <string name="view_on_github">Github</string>
-    <string name="amplify_library">Amplify</string>
-    <string name="five_stars_library">Five Stars</string>
-    <string name="material_app_rating_library">Material App Rating</string>
-    <string name="rate_library">Rate</string>
-    <string name="rate_this_app_library">Rate This App</string>
+    <string name="amplify_library">amplify</string>
+    <string name="five_stars_library">Android Five Stars Library</string>
+    <string name="material_app_rating_library">Android Material App Rating</string>
+    <string name="rate_library">Android-Rate</string>
+    <string name="rate_this_app_library"> Android-RateThisApp</string>
     <string name="initial_title">Rate our app</string>
     <string name="initial_message">Let us know what you think of our app</string>
     <string name="always_launch_switch">Library debug mode (hardcoded)</string>
@@ -24,8 +24,8 @@
     <string name="library">Library</string>
     <string name="website">Website</string>
     <string name="license">License</string>
-    <string name="title">Title</string>
-    <string name="message">Message</string>
+    <string name="title">Title (not all libraries support runtime text)</string>
+    <string name="message">Message (not all libraries support runtime text)</string>
 
 
     <string-array name="select_library">
