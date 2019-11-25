@@ -55,16 +55,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/library_select_spinner" />
 
-    <Button
+    <TextView
         android:id="@+id/project_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/card_item_start_end"
         android:layout_marginBottom="@dimen/default_margin"
-        android:text="@string/view_on_github"
+        android:autoLink="web"
         app:layout_constraintBottom_toTopOf="@+id/license_hint"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/project_link_hint" />
+        app:layout_constraintTop_toBottomOf="@+id/project_link_hint"
+        tools:text="http://google.com" />
 
 
     <TextView

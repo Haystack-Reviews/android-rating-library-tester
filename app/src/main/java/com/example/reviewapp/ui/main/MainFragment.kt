@@ -112,14 +112,7 @@ class MainFragment : Fragment(), View.OnClickListener, AdapterView.OnItemSelecte
     }
 
     private fun updateLibraryDisplay(metadata: ReviewLibraryData) {
-        project_link.setOnClickListener {
-            activity?.startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse(metadata.projectUrl)
-                )
-            )
-        }
+        project_link.text = metadata.projectUrl
         license.text = metadata.license
     }
 
