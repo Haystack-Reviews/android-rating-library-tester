@@ -6,87 +6,205 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainFragment">
 
-    <Spinner
-        android:id="@+id/library_select_spinner"
-        android:layout_width="fill_parent"
+
+    <TextView
+        android:id="@+id/step_1_header"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/launch_button"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/step_1_header"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintBottom_toTopOf="@+id/library_select_spinner_hint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/launch_button"
+
+    <TextView
+        android:id="@+id/library_select_spinner_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/launch_library"
-        app:layout_constraintBottom_toTopOf="@id/project_link"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:text="@string/library"
+        android:textSize="@dimen/card_item_hint_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/library_select_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/step_1_header" />
+
+    <Spinner
+        android:id="@+id/library_select_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
+        app:layout_constraintBottom_toTopOf="@+id/project_link_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/library_select_spinner_hint" />
+
+    <TextView
+        android:id="@+id/project_link_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:text="@string/website"
+        android:textSize="@dimen/card_item_hint_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/project_link"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/library_select_spinner" />
 
-
     <Button
         android:id="@+id/project_link"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
         android:text="@string/view_on_github"
-        app:layout_constraintBottom_toTopOf="@id/license"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/license_hint"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/launch_button" />
+        app:layout_constraintTop_toBottomOf="@+id/project_link_hint" />
+
+
+    <TextView
+        android:id="@+id/license_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:text="@string/license"
+        android:textSize="@dimen/card_item_hint_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/license"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/project_link" />
 
     <TextView
         android:id="@+id/license"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/always_launch_switch"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        app:layout_constraintBottom_toTopOf="@+id/step_2_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/license_hint"
+        tools:text="@string/apache_version_2" />
+
+    <TextView
+        android:id="@+id/step_2_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/card_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/step_2_header"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintBottom_toTopOf="@+id/initial_title_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/license" />
+
+    <TextView
+        android:id="@+id/initial_title_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:text="@string/title"
+        android:textSize="@dimen/card_item_hint_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/initial_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/step_2_header" />
+
+    <EditText
+        android:id="@+id/initial_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:text="@string/initial_title"
+        app:layout_constraintBottom_toTopOf="@+id/initial_message_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/project_link"
-        tools:text="@string/apache_version_2" />
+        app:layout_constraintTop_toBottomOf="@+id/initial_title_hint" />
+
+    <TextView
+        android:id="@+id/initial_message_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:text="@string/message"
+        android:textSize="@dimen/card_item_hint_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/initial_message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/initial_title" />
+
+    <EditText
+        android:id="@+id/initial_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:text="@string/initial_message"
+        app:layout_constraintBottom_toTopOf="@+id/always_launch_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/initial_message_hint" />
+
 
     <Switch
         android:id="@+id/always_launch_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
         android:checked="true"
         android:clickable="false"
         android:text="@string/always_launch_switch"
-        app:layout_constraintBottom_toTopOf="@id/initial_title"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/more_configurations_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/license" />
-
-    <EditText
-        android:id="@+id/initial_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/initial_title"
-        app:layout_constraintBottom_toTopOf="@id/initial_message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/always_launch_switch" />
-
-    <EditText
-        android:id="@+id/initial_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/initial_message"
-        app:layout_constraintBottom_toTopOf="@id/more_configurations_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/initial_title" />
+        app:layout_constraintTop_toBottomOf="@+id/initial_message" />
 
     <TextView
         android:id="@+id/more_configurations_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/more_controls"
+        app:layout_constraintBottom_toTopOf="@+id/step_3_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/always_launch_switch" />
+
+    <TextView
+        android:id="@+id/step_3_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/card_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/step_3_header"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintBottom_toTopOf="@+id/launch_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/more_configurations_text" />
+
+    <Button
+        android:id="@+id/launch_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/more_controls"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/launch_library"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/initial_message" />
-
+        app:layout_constraintTop_toBottomOf="@+id/step_3_header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

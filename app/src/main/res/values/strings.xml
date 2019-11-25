@@ -1,10 +1,14 @@
 <resources>
-    <string name="app_name">ReviewApp</string>
+    <string name="app_name">Review Tester</string>
+    <string name="step_1_header">Step 1: Select</string>
+    <string name="step_2_header">Step 2: Configure</string>
+    <string name="step_3_header">Step 3: Test</string>
+
 
     <string name="launch_library">Launch library</string>
     <string name="stop_and_reset_library">Stop and reset library</string>
     <string name="apache_version_2">Apache Version 2</string>
-    <string name="view_on_github">View on Github</string>
+    <string name="view_on_github">Github</string>
     <string name="amplify_library">Amplify</string>
     <string name="five_stars_library">Five Stars</string>
     <string name="material_app_rating_library">Material App Rating</string>
@@ -12,11 +16,16 @@
     <string name="rate_this_app_library">Rate This App</string>
     <string name="initial_title">Rate our app</string>
     <string name="initial_message">Let us know what you think of our app</string>
-    <string name="always_launch_switch">Launch library in debug mode (always on for now)</string>
-    <string name="more_controls">There aren\'t many controls for now. If you like this app, let us know on Github and we\'ll add lots of controls!</string>
+    <string name="always_launch_switch">Library debug mode (hardcoded)</string>
+    <string name="more_controls">Leave a review and mention other configurations you want to test!</string>
     <string name="more_configurations">There aren\'t any tracked configurations. If you like this app, let us know on Github and we\'ll add lots of configuration tracking!</string>
     <string name="days_since_install">Days since install: X</string>
     <string name="app_launches">App launches: X</string>
+    <string name="library">Library</string>
+    <string name="website">Website</string>
+    <string name="license">License</string>
+    <string name="title">Title</string>
+    <string name="message">Message</string>
 
 
     <string-array name="select_library">
