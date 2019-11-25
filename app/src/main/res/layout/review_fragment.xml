@@ -7,80 +7,113 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.ReviewFragment">
 
+    <TextView
+        android:id="@+id/review_header_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/review_header_1"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintBottom_toTopOf="@+id/library_name_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/library_name_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginStart="@dimen/card_item_start_end"
         android:layout_marginBottom="@dimen/default_margin"
-        app:layout_constraintBottom_toTopOf="@id/stop_and_reset_library"
+        android:text="@string/library"
+        android:textSize="@dimen/card_item_hint_text_size"
+        app:layout_constraintBottom_toTopOf="@id/library_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/library" />
+        app:layout_constraintTop_toBottomOf="@id/review_header_1" />
 
     <TextView
         android:id="@+id/library_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:textSize="@dimen/text_size_xlarge"
-        app:layout_constraintBottom_toTopOf="@id/stop_and_reset_library"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        app:layout_constraintBottom_toTopOf="@+id/review_header_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/library_name_hint"
         tools:text="@string/amplify_library" />
 
-    <Button
-        android:id="@+id/stop_and_reset_library"
+    <TextView
+        android:id="@+id/review_header_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/stop_and_reset_library"
-        app:layout_constraintBottom_toTopOf="@id/amplify_prompt_view"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/card_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/review_header_2"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintBottom_toTopOf="@+id/days_since_install"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/library_name" />
-
-    <com.github.stkent.amplify.prompt.DefaultLayoutPromptView
-        android:id="@+id/amplify_prompt_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/stop_and_reset_library" />
-
-    <TextView
-        android:id="@+id/more_configurations_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/more_configurations"
-        app:layout_constraintBottom_toTopOf="@id/days_since_install"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/amplify_prompt_view" />
-
 
     <TextView
         android:id="@+id/days_since_install"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
         android:text="@string/days_since_install"
-        app:layout_constraintBottom_toTopOf="@id/app_launches"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/app_launches"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/more_configurations_text" />
+        app:layout_constraintTop_toBottomOf="@id/review_header_2" />
 
     <TextView
         android:id="@+id/app_launches"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
         android:text="@string/app_launches"
+        app:layout_constraintBottom_toTopOf="@+id/more_configurations_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/days_since_install" />
+
+
+    <TextView
+        android:id="@+id/more_configurations_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/more_configurations"
+        app:layout_constraintBottom_toTopOf="@+id/amplify_prompt_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_launches" />
+
+
+    <com.github.stkent.amplify.prompt.DefaultLayoutPromptView
+        android:id="@+id/amplify_prompt_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/card_item_start_end"
+        android:layout_marginEnd="@dimen/card_item_start_end"
+        android:layout_marginBottom="@dimen/default_margin"
+        app:layout_constraintBottom_toTopOf="@+id/stop_and_reset_library"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/more_configurations_text" />
+
+    <Button
+        android:id="@+id/stop_and_reset_library"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stop_and_reset_library"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/days_since_install" />
+        app:layout_constraintTop_toBottomOf="@id/amplify_prompt_view" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

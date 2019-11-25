@@ -178,7 +178,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_item_start_end"
         android:layout_marginEnd="@dimen/card_item_start_end"
-        android:layout_marginBottom="@dimen/default_margin"
         android:text="@string/more_controls"
         app:layout_constraintBottom_toTopOf="@+id/step_3_header"
         app:layout_constraintEnd_toEndOf="parent"
