@@ -153,14 +153,14 @@
         android:importantForAutofill="no"
         android:inputType="text"
         android:text="@string/initial_message"
-        app:layout_constraintBottom_toTopOf="@+id/always_launch_switch"
+        app:layout_constraintBottom_toTopOf="@+id/library_debug_mode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/initial_message_hint" />
 
 
     <Switch
-        android:id="@+id/always_launch_switch"
+        android:id="@+id/library_debug_mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_item_start_end"
@@ -182,7 +182,7 @@
         app:layout_constraintBottom_toTopOf="@+id/step_3_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/always_launch_switch" />
+        app:layout_constraintTop_toBottomOf="@+id/library_debug_mode" />
 
     <TextView
         android:id="@+id/step_3_header"

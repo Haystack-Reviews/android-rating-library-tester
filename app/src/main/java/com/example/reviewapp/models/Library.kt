@@ -1,6 +1,6 @@
 package com.example.reviewapp.models
 
-enum class ReviewLibrary {
+enum class Library {
     RateLibrary,
     AmplifyLibrary,
     RateThisAppLibrary,

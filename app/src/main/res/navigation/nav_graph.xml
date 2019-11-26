@@ -9,7 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="com.example.reviewapp.ui.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main">
+        tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_mainFragment_to_reviewFragment"
             app:destination="@id/reviewFragment" />
@@ -20,8 +20,8 @@
         android:name="com.example.reviewapp.ui.main.ReviewFragment"
         android:label="ReviewFragment">
         <argument
-            android:name="reviewLibConfig"
-            app:argType="com.example.reviewapp.models.ReviewLibraryConfig" />
+            android:name="libraryConfig"
+            app:argType="com.example.reviewapp.models.LibraryConfig" />
         <action
             android:id="@+id/action_reviewFragment_to_mainFragment"
             app:destination="@id/mainFragment"

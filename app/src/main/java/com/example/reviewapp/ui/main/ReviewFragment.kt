@@ -1,8 +1,6 @@
 package com.example.reviewapp.ui.main
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +10,13 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import angtrim.com.fivestarslibrary.FiveStarsDialog
 import com.example.reviewapp.R
-import com.example.reviewapp.models.AndroidSpecificConfig
-import com.example.reviewapp.models.ReviewLibrary.*
-import com.example.reviewapp.models.ReviewLibraryConfig
+import com.example.reviewapp.models.AndroidConfig
+import com.example.reviewapp.models.Library.*
+import com.example.reviewapp.models.LibraryConfig
 import com.github.stkent.amplify.tracking.Amplify
 import com.kobakei.ratethisapp.RateThisApp
 import com.stepstone.apprating.AppRatingDialog
 import hotchemi.android.rate.AppRate
-import hotchemi.android.rate.OnClickButtonListener
 import kotlinx.android.synthetic.main.review_fragment.*
 
 
@@ -32,50 +29,13 @@ class ReviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        library_name.text = args.libraryConfig.library.name
+        launchLibrary()
+
         navController = Navigation.findNavController(view)
-
-
-        library_name.text = args.reviewLibConfig.library.name
-
-        val config = args.reviewLibConfig
-
-        val applicationContext = context?.applicationContext
-        val fragmentContext = context
-        val activity = activity
-        if (applicationContext != null && fragmentContext != null && activity != null) {
-
-            val androidSpecificConfig =
-                AndroidSpecificConfig(applicationContext, fragmentContext, activity)
-
-            when (args.reviewLibConfig.library) {
-                AmplifyLibrary -> launchAmplify(config, androidSpecificConfig)
-                RateThisAppLibrary -> launchRateThisApp(config, androidSpecificConfig)
-                RateLibrary -> launchAndroidRate(config, androidSpecificConfig)
-                MaterialAppRatingLibrary -> launchMaterialAppRating(config, androidSpecificConfig)
-                FiveStarsLibrary -> launchAndroidFiveStars(config, androidSpecificConfig)
-            }
-        }
-
-        stop_and_reset_library.setOnClickListener {
-
-            activity?.getSharedPreferences("AMPLIFY_SHARED_PREFERENCES_NAME", 0)?.edit()?.clear()
-                ?.commit()
-            activity?.getSharedPreferences("RateThisApp", 0)?.edit()?.clear()?.commit()
-            context?.let {
-                AppRate.with(it).clearSettingsParam()
-            }
-            // Material library has no persisted data
-            // FiveStarsLibary uses package name :(
-            context?.let {
-                activity?.getSharedPreferences(it.packageName, 0)?.edit()?.clear()?.commit()
-            }
-
-
-            navController.navigate(
-                ReviewFragmentDirections.actionReviewFragmentToMainFragment()
-            )
-        }
+        stop_and_reset_library.setOnClickListener { resetLibrariesAndNavigateToMainFragment() }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,33 +44,72 @@ class ReviewFragment : Fragment() {
         return inflater.inflate(R.layout.review_fragment, container, false)
     }
 
+    private fun resetLibrariesAndNavigateToMainFragment() {
+        // Reset amplify library (no public method exposed)
+        activity?.getSharedPreferences("AMPLIFY_SHARED_PREFERENCES_NAME", 0)?.edit()?.clear()
+            ?.commit()
+        // Reset RateThisApp library (no public method exposed)
+        activity?.getSharedPreferences("RateThisApp", 0)?.edit()?.clear()?.commit()
+        // Reset Apprate library
+        context?.let {
+            AppRate.with(it).clearSettingsParam()
+        }
+        // Reset FiveStars library (uses package name :( and no public method exposed)
+        context?.let {
+            activity?.getSharedPreferences(it.packageName, 0)?.edit()?.clear()?.commit()
+        }
+        // Material library has no persisted data, nothing to reset
 
-    private fun launchAmplify(
-        config: ReviewLibraryConfig,
-        androidSpecificConfig: AndroidSpecificConfig
-    ) {
+        navController.navigate(
+            ReviewFragmentDirections.actionReviewFragmentToMainFragment()
+        )
+    }
+
+    private fun launchLibrary() {
+        val applicationContext = context?.applicationContext
+        val fragmentContext = context
+        val activity = activity
+        if (applicationContext != null && fragmentContext != null && activity != null) {
+
+            val libraryConfig = args.libraryConfig
+            val androidConfig =
+                AndroidConfig(applicationContext, fragmentContext, activity)
+
+            when (libraryConfig.library) {
+                AmplifyLibrary -> launchAmplify()
+                RateThisAppLibrary -> launchRateThisApp(libraryConfig, androidConfig)
+                RateLibrary -> launchAndroidRate(libraryConfig, androidConfig)
+                MaterialAppRatingLibrary -> launchMaterialAppRating(libraryConfig, androidConfig)
+                FiveStarsLibrary -> launchAndroidFiveStars(libraryConfig, androidConfig)
+            }
+        }
+    }
+
+    private fun launchAmplify() {
         Amplify.getSharedInstance().promptIfReady(amplify_prompt_view)
     }
 
     private fun launchRateThisApp(
-        config: ReviewLibraryConfig,
-        androidSpecificConfig: AndroidSpecificConfig
+        config: LibraryConfig,
+        androidConfig: AndroidConfig
     ) {
-        // Monitor launch times and interval from installation
         val rateConfig = RateThisApp.Config(0, 0)
         RateThisApp.init(rateConfig)
-        RateThisApp.onCreate(androidSpecificConfig.fragmentContext)
+        RateThisApp.onCreate(androidConfig.fragmentContext)
         if (config.debugAlwaysLaunch) {
-            RateThisApp.showRateDialog(androidSpecificConfig.fragmentContext)
+            RateThisApp.showRateDialog(androidConfig.fragmentContext)
         } else {
-            RateThisApp.showRateDialogIfNeeded(androidSpecificConfig.fragmentContext)
+            RateThisApp.showRateDialogIfNeeded(androidConfig.fragmentContext)
         }
     }
 
     private fun launchMaterialAppRating(
-        config: ReviewLibraryConfig,
-        androidSpecificConfig: AndroidSpecificConfig
+        config: LibraryConfig,
+        androidConfig: AndroidConfig
     ) {
+        // Surprisingly the library doesn't provide
+        // default text for many items.
+        // Leaving hardcoded for now.
         AppRatingDialog.Builder()
             .setPositiveButtonText("Submit")
             .setNegativeButtonText("Cancel")
@@ -124,65 +123,38 @@ class ReviewFragment : Fragment() {
                     "Excellent !!!"
                 )
             )
-            .setDefaultRating(2)
             .setTitle(config.initialTitle)
             .setDescription(config.initialMessage)
             .setCommentInputEnabled(true)
-            .setDefaultComment("This app is pretty cool !")
-//            .setStarColor(R.color.starColor)
-//            .setNoteDescriptionTextColor(R.color.noteDescriptionTextColor)
-//            .setTitleTextColor(R.color.titleTextColor)
-//            .setDescriptionTextColor(R.color.contentTextColor)
-//            .setHint("Please write your comment here ...")
-//            .setHintTextColor(R.color.hintTextColor)
-//            .setCommentTextColor(R.color.commentTextColor)
-//            .setCommentBackgroundColor(R.color.colorPrimaryDark)
-//            .setWindowAnimation(R.style.MyDialogFadeAnimation)
-            .setCancelable(false)
-            .setCanceledOnTouchOutside(false)
-            .create(androidSpecificConfig.activity)
-            // Why does this crash when using Navigation component?
-//                .setTargetFragment(this, 1) // only if listener is implemented by fragment
+            .setDefaultComment("Default comment")
+            .create(androidConfig.activity)
             .show()
     }
 
     private fun launchAndroidFiveStars(
-        config: ReviewLibraryConfig,
-        androidSpecificConfig: AndroidSpecificConfig
+        config: LibraryConfig,
+        androidConfig: AndroidConfig
     ) {
-        // Future Seb: if you don't see this dialog, check if you pressed the "Never" box
         val fiveStarsDialog =
-            FiveStarsDialog(androidSpecificConfig.activity, "angelo.gallarello@gmail.com")
+            FiveStarsDialog(androidConfig.activity, "seb@haystackreviews.com")
         fiveStarsDialog.setRateText(config.initialMessage)
             .setTitle(config.initialTitle)
             .setForceMode(config.debugAlwaysLaunch)
-            .setUpperBound(2) // Market opened if a rating >= 2 is selected
-//                .setNegativeReviewListener() // OVERRIDE mail intent for negative review
-//                .setReviewListener() // Used to listen for reviews (if you want to track them )
+            .setUpperBound(2)
             .showAfter(0)
     }
 
     private fun launchAndroidRate(
-        config: ReviewLibraryConfig,
-        androidSpecificConfig: AndroidSpecificConfig
+        config: LibraryConfig,
+        androidConfig: AndroidConfig
     ) {
-        AppRate.with(androidSpecificConfig.fragmentContext)
-            .setInstallDays(0) // default 10, 0 means install day.
-            .setLaunchTimes(3) // default 10
-            .setRemindInterval(2) // default 1
-            .setShowLaterButton(true) // default true
+        AppRate.with(androidConfig.fragmentContext)
             .setTitle(config.initialTitle)
             .setMessage(config.initialMessage)
-            .setDebug(config.debugAlwaysLaunch) // default false
-            .setOnClickButtonListener(object : OnClickButtonListener { // callback listener.
-                override fun onClickButton(which: Int) {
-                    Log.d("SEBLOG", "launchAndroidRate ${which}")
-                }
-            })
+            .setDebug(config.debugAlwaysLaunch)
             .monitor()
 
-        // Show a dialog if meets conditions
-        AppRate.showRateDialogIfMeetsConditions(androidSpecificConfig.activity)
+        AppRate.showRateDialogIfMeetsConditions(androidConfig.activity)
     }
 
 }
