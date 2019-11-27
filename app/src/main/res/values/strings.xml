@@ -7,12 +7,6 @@
 
     <string name="launch_library">Launch library</string>
     <string name="stop_and_reset_library">Stop and reset library</string>
-    <string name="apache_version_2">Apache Version 2</string>
-    <string name="amplify_library">amplify</string>
-    <string name="five_stars_library">Android Five Stars Library</string>
-    <string name="material_app_rating_library">Android Material App Rating</string>
-    <string name="rate_library">Android-Rate</string>
-    <string name="rate_this_app_library"> Android-RateThisApp</string>
     <string name="initial_title">Rate our app</string>
     <string name="initial_message">Let us know what you think of our app</string>
     <string name="always_launch_switch">Library debug mode (hardcoded)</string>
@@ -27,13 +21,4 @@
     <string name="message">Message (not all libraries support runtime text)</string>
     <string name="review_header_2">Analytics</string>
     <string name="review_header_1">Info</string>
-
-
-    <string-array name="select_library">
-        <item>@string/amplify_library</item>
-        <item>@string/five_stars_library</item>
-        <item>@string/material_app_rating_library</item>
-        <item>@string/rate_library</item>
-        <item>@string/rate_this_app_library</item>
-    </string-array>
 </resources>

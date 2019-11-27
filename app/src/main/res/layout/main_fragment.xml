@@ -89,7 +89,7 @@
         app:layout_constraintBottom_toTopOf="@+id/step_2_header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/license_hint"
-        tools:text="@string/apache_version_2" />
+        tools:text="Apache Version 2" />
 
     <TextView
         android:id="@+id/step_2_header"

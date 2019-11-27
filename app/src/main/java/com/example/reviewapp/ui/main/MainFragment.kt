@@ -39,15 +39,7 @@ class MainFragment : Fragment(), AdapterView.OnItemSelectedListener {
         selectLibrary = library_select_spinner
         selectLibrary.onItemSelectedListener = this
         context?.let {
-            ArrayAdapter.createFromResource(
-                it,
-                R.array.select_library,
-                android.R.layout.simple_spinner_item
-            )
-                .also { adapter ->
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                    selectLibrary.adapter = adapter
-                }
+                selectLibrary.adapter = ArrayAdapter<Library>(it, android.R.layout.simple_spinner_dropdown_item, Library.values())
         }
     }
 
@@ -65,14 +57,7 @@ class MainFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val metadata = when (selectedLibrary()) {
-            Library.RateLibrary -> RateLibraryData
-            Library.AmplifyLibrary -> AmplifyLibraryData
-            Library.RateThisAppLibrary -> RateThisAppLibraryData
-            Library.MaterialAppRatingLibrary -> MaterialAppRatingLibraryData
-            Library.FiveStarsLibrary -> FiveStarsLibraryData
-        }
-        updateLibrary(metadata)
+        updateLibrary(selectedLibrary())
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -80,27 +65,16 @@ class MainFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     private fun selectedLibrary(): Library {
-        val selectedString = selectLibrary.selectedItem
-        return if (selectedString is String) {
-            libraryStringToModel(selectedString)
+        val selectedLibrary = selectLibrary.selectedItem
+        return if (selectedLibrary is Library) {
+            selectedLibrary
         } else {
             Library.AmplifyLibrary
         }
     }
 
-    private fun libraryStringToModel(libraryString: String): Library {
-        return when (libraryString) {
-            getString(R.string.amplify_library) -> Library.AmplifyLibrary
-            getString(R.string.five_stars_library) -> Library.FiveStarsLibrary
-            getString(R.string.material_app_rating_library) -> Library.MaterialAppRatingLibrary
-            getString(R.string.rate_library) -> Library.RateLibrary
-            getString(R.string.rate_this_app_library) -> Library.RateThisAppLibrary
-            else -> Library.AmplifyLibrary
-        }
-    }
-
-    private fun updateLibrary(metadata: Metadata) {
-        project_link.text = metadata.projectUrl
-        license.text = metadata.license
+    private fun updateLibrary(library: Library) {
+        project_link.text = library.projectUrl
+        license.text = library.license
     }
 }

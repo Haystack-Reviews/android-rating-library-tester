@@ -29,7 +29,7 @@ class ReviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        library_name.text = args.libraryConfig.library.name
+        library_name.text = args.libraryConfig.library.displayName
         launchLibrary()
 
         navController = Navigation.findNavController(view)
