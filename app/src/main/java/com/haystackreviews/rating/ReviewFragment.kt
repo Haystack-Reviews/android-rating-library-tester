@@ -1,4 +1,4 @@
-package com.example.reviewapp.ui.main
+package com.haystackreviews.rating
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +9,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import angtrim.com.fivestarslibrary.FiveStarsDialog
-import com.example.reviewapp.R
-import com.example.reviewapp.models.AndroidConfig
-import com.example.reviewapp.models.Library.*
-import com.example.reviewapp.models.LibraryConfig
+import com.haystackreviews.rating.models.AndroidConfig
+import com.haystackreviews.rating.models.Library.*
+import com.haystackreviews.rating.models.LibraryConfig
 import com.github.stkent.amplify.tracking.Amplify
 import com.kobakei.ratethisapp.RateThisApp
 import com.stepstone.apprating.AppRatingDialog
@@ -136,11 +135,11 @@ class ReviewFragment : Fragment() {
         androidConfig: AndroidConfig
     ) {
         val fiveStarsDialog =
-            FiveStarsDialog(androidConfig.activity, "seb@haystackreviews.com")
+            FiveStarsDialog(androidConfig.activity, androidConfig.applicationContext.getString(R.string.feedback_email))
         fiveStarsDialog.setRateText(config.initialMessage)
             .setTitle(config.initialTitle)
             .setForceMode(config.debugAlwaysLaunch)
-            .setUpperBound(2)
+            .setUpperBound(4)
             .showAfter(0)
     }
 

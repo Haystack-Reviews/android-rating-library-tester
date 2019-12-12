@@ -1,4 +1,4 @@
-package com.example.reviewapp
+package com.haystackreviews.rating
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

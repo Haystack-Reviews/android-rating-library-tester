@@ -1,4 +1,4 @@
-package com.example.reviewapp.ui.main
+package com.haystackreviews.rating
 
 
 import android.os.Bundle
@@ -11,8 +11,8 @@ import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.reviewapp.R
-import com.example.reviewapp.models.*
+import com.haystackreviews.rating.R
+import com.haystackreviews.rating.models.*
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment(), AdapterView.OnItemSelectedListener {

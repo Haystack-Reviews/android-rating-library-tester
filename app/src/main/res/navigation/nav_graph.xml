@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.reviewapp.ui.main.MainFragment"
+        android:name="com.haystackreviews.rating.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/main_fragment">
         <action
@@ -17,11 +17,11 @@
 
     <fragment
         android:id="@+id/reviewFragment"
-        android:name="com.example.reviewapp.ui.main.ReviewFragment"
+        android:name="com.haystackreviews.rating.ReviewFragment"
         android:label="ReviewFragment">
         <argument
             android:name="libraryConfig"
-            app:argType="com.example.reviewapp.models.LibraryConfig" />
+            app:argType="com.haystackreviews.rating.models.LibraryConfig" />
         <action
             android:id="@+id/action_reviewFragment_to_mainFragment"
             app:destination="@id/mainFragment"

@@ -1,4 +1,4 @@
-package com.example.reviewapp.models
+package com.haystackreviews.rating.models
 
 // Licenses
 private val ApacheLicense2 = "Apache License 2.0"

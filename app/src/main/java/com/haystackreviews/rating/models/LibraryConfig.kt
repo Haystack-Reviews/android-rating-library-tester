@@ -1,4 +1,4 @@
-package com.example.reviewapp.models
+package com.haystackreviews.rating.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

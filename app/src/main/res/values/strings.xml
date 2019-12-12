@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">Review Tester</string>
+    <string name="app_name">Rating Library Tester</string>
     <string name="step_1_header">Step 1: Select</string>
     <string name="step_2_header">Step 2: Configure</string>
     <string name="step_3_header">Step 3: Test</string>
+
+    <string name="feedback_email">someone@example.com</string>
 
 
     <string name="launch_library">Launch library</string>
