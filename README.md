@@ -31,7 +31,7 @@ Make sure to follow [Google's Ratings/Reviews guidelines](https://play.google.co
 ![](https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/amplify.png)
 
 #### [Android Five Stars Library](https://github.com/Angtrim/Android-Five-Stars-Library)
-![](https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/five-stars.png)
+![](https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/five-star.png)
 
 #### [Android Material App Rating](https://github.com/stepstone-tech/android-material-app-rating)
 ![](https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/material.png)
