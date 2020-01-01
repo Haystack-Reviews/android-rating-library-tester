@@ -2,22 +2,24 @@
 
 # Android Rating Library Tester
 ## Rate your app
-If you're an Android developer, you likely ask your users to rate your app.
+If you're an Android developer, you probably prompt your users to rate your app.
 
 Users that love your app will give you high ratings. This leads to more installs.
 
-While working on apps previously, I wrote custom rating logic code.
+While working on apps previously, I wrote custom rating prompt code.
 
-With this app, you can experiment with different rating libraries to avoid re-writing this code.
+With this app, you can experiment with different rating libraries to avoid re-writing this type of code.
 
-## Give us feedback
-If you love a different library or have feature requests or other ideas, open an issue.
+## What else would be helpful?
+If you love a different library, have a feature request, or other ideas, open an issue.
 
 Currently the libraries are minimally configured.
 
-First wanted to hear what is most important from you before adding more features.
+I first wanted to hear what would be helpful to you before adding more features.
 
-Make sure to follow [Google's Ratings/Reviews guidelines](https://play.google.com/about/storelisting-promotional/ratings-reviews-installs/) when you ask users to rate your app.
+Make sure to follow [Google's Ratings/Reviews guidelines](https://play.google.com/about/storelisting-promotional/ratings-reviews-installs/) when you prompt users to rate your app.
+
+Development of this test app is live streamed on (GitDuck)[https://gitduck.com/sgallese]
 
 ![](https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/rating.gif)
 
