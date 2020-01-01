@@ -12,8 +12,8 @@
     <string name="initial_title">Rate our app</string>
     <string name="initial_message">Let us know what you think of our app</string>
     <string name="always_launch_switch">Library debug mode (hardcoded)</string>
-    <string name="more_controls">Leave a review and mention other configurations you want to test.</string>
-    <string name="more_configurations">Leave a review and mention what else you want tracked.</string>
+    <string name="more_controls">Open an issue and mention other configurations you want to test.</string>
+    <string name="more_configurations">Open an issue and mention what else you want tracked.</string>
     <string name="days_since_install">Days since install: not yet tracked</string>
     <string name="app_launches">App launches since install: not yet tracked</string>
     <string name="library">Library</string>
