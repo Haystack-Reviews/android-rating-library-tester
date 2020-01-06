@@ -10,6 +10,8 @@ While developing apps, I usually write custom rating prompt code.
 
 With this app, you can experiment with different rating libraries to avoid re-writing this type of code.
 
+<a href='https://play.google.com/store/apps/details?id=com.haystackreviews.rating'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="280" height="108" /></a>
+
 ## What else would be helpful?
 If you love a different library, have a feature request, or other ideas, open an issue.
 
