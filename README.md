@@ -37,14 +37,22 @@ Don't want to clone and build? Try it out here:
 #### [amplify](https://github.com/stkent/amplify)
 <img alt='Amplify' src='https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/amplify.png' width="299" height="560" />
 
+---
+
 #### [Android Five Stars Library](https://github.com/Angtrim/Android-Five-Stars-Library)
 <img alt='Android Five Stars Library' src='https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/five-stars.png' width="299" height="560" />
+
+---
 
 #### [Android Material App Rating](https://github.com/stepstone-tech/android-material-app-rating)
 <img alt='Android Material App Rating' src='https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/material.png' width="299" height="560" />
 
+---
+
 #### [Android-RateThisApp](https://github.com/kobakei/Android-RateThisApp)
 <img alt='Android-RateThisApp' src='https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/ratethisapp.png' width="299" height="560" />
+
+---
 
 #### [Android-Rate](https://github.com/hotchemi/Android-Rate)
 <img alt='Android-Rate' src='https://raw.githubusercontent.com/Haystack-Reviews/android-rating-library-tester/master/screenshots/rate.png' width="299" height="560" />
