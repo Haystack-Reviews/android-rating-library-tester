@@ -29,7 +29,7 @@ Development of this test app is live streamed on [GitDuck](https://gitduck.com/s
 - Comparison between Android and iOS rating libraries.
 
 ## Download
-Don't wanna to clone and build? Try it out here:
+Don't want to clone and build? Try it out here:
 
 <a href='https://play.google.com/store/apps/details?id=com.haystackreviews.rating'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="196" height="76" /></a>
 
