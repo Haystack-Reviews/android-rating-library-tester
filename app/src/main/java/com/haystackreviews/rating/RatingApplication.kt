@@ -13,6 +13,6 @@ class RatingApplication : Application() {
             .setPositiveFeedbackCollectors(GooglePlayStoreFeedbackCollector())
             .setCriticalFeedbackCollectors(DefaultEmailFeedbackCollector(getString(R.string.feedback_email)))
             .applyAllDefaultRules()
-            .setAlwaysShow(BuildConfig.DEBUG)
+            .setAlwaysShow(true) // TODO tie this to always launch checkmark option
     }
 }

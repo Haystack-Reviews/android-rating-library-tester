@@ -13,14 +13,15 @@ android {
         applicationId "com.haystackreviews.rating"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         resConfigs "en"
     }
     buildTypes {
         release {
+            // TODO add signing key (but not values) for easy Android Studio release testing
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
