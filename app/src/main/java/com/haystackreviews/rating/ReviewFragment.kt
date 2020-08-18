@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -13,6 +14,7 @@ import com.haystackreviews.rating.models.AndroidConfig
 import com.haystackreviews.rating.models.Library.*
 import com.haystackreviews.rating.models.LibraryConfig
 import com.github.stkent.amplify.tracking.Amplify
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.kobakei.ratethisapp.RateThisApp
 import com.stepstone.apprating.AppRatingDialog
 import hotchemi.android.rate.AppRate
@@ -75,11 +77,30 @@ class ReviewFragment : Fragment() {
                 AndroidConfig(applicationContext, fragmentContext, activity)
 
             when (libraryConfig.library) {
+                InAppRating -> launchInAppRating(libraryConfig, androidConfig)
                 AmplifyLibrary -> launchAmplify()
                 RateThisAppLibrary -> launchRateThisApp(libraryConfig, androidConfig)
                 RateLibrary -> launchAndroidRate(libraryConfig, androidConfig)
                 MaterialAppRatingLibrary -> launchMaterialAppRating(libraryConfig, androidConfig)
                 FiveStarsLibrary -> launchAndroidFiveStars(libraryConfig, androidConfig)
+            }
+        }
+    }
+
+    private fun launchInAppRating(
+        config: LibraryConfig,
+        androidConfig: AndroidConfig) {
+        val manager = ReviewManagerFactory.create(androidConfig.applicationContext)
+        val request = manager.requestReviewFlow()
+        request.addOnCompleteListener { request ->
+            if (request.isSuccessful) {
+                val reviewInfo = request.result
+                val flow = manager.launchReviewFlow(androidConfig.activity, reviewInfo)
+                flow.addOnCompleteListener { _ ->
+                    Toast.makeText(androidConfig.applicationContext, "In App Rating complete", Toast.LENGTH_LONG).show()
+                }
+            } else {
+                Toast.makeText(androidConfig.applicationContext, "In App Rating failure: requestReviewFlow", Toast.LENGTH_LONG).show()
             }
         }
     }

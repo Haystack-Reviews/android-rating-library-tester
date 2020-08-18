@@ -6,6 +6,7 @@ private val MITLicense = "MIT License"
 private val NoLicense = "No License"
 
 enum class Library(val displayName: String, val projectUrl: String, val license: String) {
+    InAppRating("Google In App Rating", "https://developer.android.com/guide/playcore/in-app-review", NoLicense),
     AmplifyLibrary("amplify", "https://github.com/stkent/amplify", ApacheLicense2),
     FiveStarsLibrary(
         "Android Five Stars Library",

@@ -69,7 +69,7 @@ class MainFragment : Fragment(), AdapterView.OnItemSelectedListener {
         return if (selectedLibrary is Library) {
             selectedLibrary
         } else {
-            Library.AmplifyLibrary
+            Library.InAppRating
         }
     }
 
